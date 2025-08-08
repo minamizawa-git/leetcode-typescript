@@ -1,0 +1,15 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended-type-checked"
+  ],
+  "rules": {
+    "@typescript-eslint/no-non-null-assertion": "error"
+  },
+  "ignorePatterns": ["node_modules/**", "dist/**", "coverage/**", "jest.config.js"]
+}

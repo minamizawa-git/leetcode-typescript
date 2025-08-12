@@ -1,5 +1,7 @@
 # LeetCode学習記録 / LeetCode Learning Journey
 
+[![CI](https://github.com/minamizawa-git/leetcode-typescript/actions/workflows/main.yml/badge.svg)](https://github.com/minamizawa-git/leetcode-typescript/actions/workflows/main.yml)
+
 [English](./README.en.md) | **日本語**
 
 ## プロジェクト概要

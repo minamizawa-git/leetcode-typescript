@@ -11,8 +11,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Verify workflow execution
-        run: echo "Hello from GitHub Actions!"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify Node.js installation
+        run: |
+          echo "Node version: $(node --version)"
+          echo "npm version: $(npm --version)"
 
       - name: List repository contents
         run: ls -la

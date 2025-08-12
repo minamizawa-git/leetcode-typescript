@@ -3,6 +3,8 @@ name: CI
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   test:
@@ -15,11 +17,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
-      - name: Verify Node.js installation
-        run: |
-          echo "Node version: $(node --version)"
-          echo "npm version: $(npm --version)"
+      - name: Install dependencies
+        run: npm ci
 
-      - name: List repository contents
-        run: ls -la
+      - name: Run linter
+        run: npm run lint
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Run tests
+        run: npm test

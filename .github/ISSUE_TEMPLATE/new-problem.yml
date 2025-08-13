@@ -1,0 +1,87 @@
+name: New Problem Implementation
+description: Add a new LeetCode problem to the repository
+title: '0001 - Two Sum'
+labels: ['problem', 'implementation']
+body:
+  - type: input
+    id: problem_number
+    attributes:
+      label: Problem Number
+      description: LeetCode problem number (4-digit format)
+      placeholder: '0001'
+    validations:
+      required: true
+
+  - type: input
+    id: problem_title
+    attributes:
+      label: Problem Title
+      description: LeetCode problem title
+      placeholder: 'Two Sum'
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: List all constraints (use categories if applicable)
+      placeholder: |
+        Array:
+        - 2 <= nums.length <= 10^4
+
+        Values:
+        - -10^9 <= nums[i] <= 10^9
+        - -10^9 <= target <= 10^9
+
+        Other:
+        - Only one valid answer exists
+    validations:
+      required: true
+
+  - type: textarea
+    id: test_design_notes
+    attributes:
+      label: Test Design Considerations
+      description: |
+        Apply these common testing principles and note any problem-specific considerations:
+
+        **Required Principles:**
+        1. Define CONSTRAINTS as constants (UPPER_SNAKE_CASE) at test file top
+        2. Calculate derived values as variables (lowerCamelCase) within tests
+        3. Consider worst-case scenarios (Identify O(n²) or exponential cases that stress the algorithm)
+        4. Test with actual constraint boundaries, not just "large" values
+        5. Handle numerical precision for floating-point problems
+        6. Optimize test combinations (avoid redundant tests)
+
+        **Problem-Specific Considerations:**
+        List any unique test scenarios for this problem
+      placeholder: |
+        Define CONSTRAINTS:
+        - Minimum/maximum input sizes (using CONSTRAINTS.MIN_LENGTH, MAX_LENGTH)
+        - Boundary values (using CONSTRAINTS.MIN_VALUE, MAX_VALUE)
+
+        Test categories to consider:
+        - Basic functionality (given examples)
+        - Special values (zero, negative)
+        - Array size limits (MIN_LENGTH: 2, MAX_LENGTH: 10^4)
+        - Worst-case performance (solution at array end, maximum recursion depth)
+        - Boundary values (MIN_VALUE: -10^9, MAX_VALUE: 10^9)
+        - [Add any unique scenarios for this problem]
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: implementation_checklist
+    attributes:
+      label: Implementation Checklist
+      description: Track implementation progress
+      options:
+        - label: Create directory structure (`src/problems/xxxx-problem-name/`)
+        - label: Define CONSTRAINTS constants in test file
+        - label: Write comprehensive test cases
+        - label: Implement solution(s)
+        - label: Add complexity analysis in comments
+        - label: Format code (`npm run format`)
+        - label: Run lint checks (`npm run lint`)
+        - label: Verify all tests pass

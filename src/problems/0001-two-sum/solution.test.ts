@@ -125,18 +125,14 @@ describe('Two Sum', () => {
         const target = MAX_VALUE - 1;
         const firstValue = Math.floor(target / 2);
         const complement = target - firstValue;
-        expect(twoSum([firstValue, complement, 0], target)).toEqual([
-          0, 1,
-        ]);
+        expect(twoSum([firstValue, complement, 0], target)).toEqual([0, 1]);
       });
 
       it('should work with target near MIN_VALUE', () => {
         const target = MIN_VALUE + 1;
         const firstValue = Math.ceil(target / 2);
         const complement = target - firstValue;
-        expect(twoSum([firstValue, complement, 0], target)).toEqual([
-          0, 1,
-        ]);
+        expect(twoSum([firstValue, complement, 0], target)).toEqual([0, 1]);
       });
     });
   });

@@ -53,6 +53,7 @@ body:
         4. Test with actual constraint boundaries, not just "large" values
         5. Handle numerical precision for floating-point problems
         6. Optimize test combinations (avoid redundant tests)
+        7. Never optimize for specific test inputs - optimize for algorithmic efficiency
 
         **Problem-Specific Considerations:**
         List any unique test scenarios for this problem

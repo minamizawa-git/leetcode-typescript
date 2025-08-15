@@ -107,28 +107,34 @@ describe('Two Sum', () => {
     describe('Target at boundaries', () => {
       it('should work with maximum positive target', () => {
         // Target is MAX_VALUE
-        const halfMax = Math.floor(MAX_VALUE / 2);
-        expect(twoSum([halfMax, halfMax, 1], MAX_VALUE)).toEqual([0, 1]);
+        const firstValue = Math.floor(MAX_VALUE / 2);
+        const complement = MAX_VALUE - firstValue;
+        expect(twoSum([firstValue, complement, 1], MAX_VALUE)).toEqual([0, 1]);
       });
 
       it('should work with minimum negative target', () => {
         // Target is MIN_VALUE
-        const halfMin = Math.ceil(MIN_VALUE / 2);
-        expect(twoSum([halfMin, halfMin, -1], MIN_VALUE)).toEqual([0, 1]);
+        const firstValue = Math.ceil(MIN_VALUE / 2);
+        const complement = MIN_VALUE - firstValue;
+        expect(twoSum([firstValue, complement, -1], MIN_VALUE)).toEqual([0, 1]);
       });
     });
 
     describe('Target near boundaries', () => {
       it('should work with target near MAX_VALUE', () => {
-        const halfMax = Math.floor((MAX_VALUE - 1) / 2);
-        expect(twoSum([halfMax, halfMax + 1, 0], MAX_VALUE - 1)).toEqual([
+        const target = MAX_VALUE - 1;
+        const firstValue = Math.floor(target / 2);
+        const complement = target - firstValue;
+        expect(twoSum([firstValue, complement, 0], target)).toEqual([
           0, 1,
         ]);
       });
 
       it('should work with target near MIN_VALUE', () => {
-        const halfMin = Math.ceil((MIN_VALUE + 1) / 2);
-        expect(twoSum([halfMin, halfMin - 1, 0], MIN_VALUE + 1)).toEqual([
+        const target = MIN_VALUE + 1;
+        const firstValue = Math.ceil(target / 2);
+        const complement = target - firstValue;
+        expect(twoSum([firstValue, complement, 0], target)).toEqual([
           0, 1,
         ]);
       });

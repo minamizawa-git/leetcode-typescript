@@ -119,9 +119,10 @@ Test code may only be modified when:
 When implementing a new LeetCode problem:
 
 1. Create directory: `src/problems/[number(4-digit format)]-[name]/`
-2. Implement multiple solution approaches in `solution.ts`
-3. Export optimal solution as default, alternatives as named exports
-4. Write comprehensive tests covering all constraint boundaries
-5. Include complexity analysis in JSDoc comments
-6. Add bilingual comments for key logic
-7. Ensure all CI checks pass before committing
+2. Write comprehensive tests covering all constraint boundaries
+3. Implement multiple solution approaches in `solution.ts`
+4. Refactor and add alternative approaches
+5. Export optimal solution as default, alternatives as named exports
+6. Include complexity analysis in JSDoc comments
+7. Add bilingual comments for key logic
+8. Ensure all CI checks pass before committing

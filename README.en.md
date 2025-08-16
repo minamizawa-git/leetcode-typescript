@@ -41,3 +41,16 @@ npm test -- --testPathPattern="0001-two-sum"
 # Run tests for a specific file
 npm test src/problems/0001-two-sum/solution.test.ts
 ```
+
+## Adding New Problems
+
+When implementing a new LeetCode problem:
+
+1. Create directory: `src/problems/[number(4-digit format)]-[name]/`
+2. Write comprehensive tests covering all constraint boundaries
+3. Implement multiple solution approaches in `solution.ts`
+4. Refactor and add alternative approaches
+5. Export optimal solution as default, alternatives as named exports
+6. Include complexity analysis in JSDoc comments
+7. Add bilingual comments for key logic
+8. Ensure all CI checks pass before committing

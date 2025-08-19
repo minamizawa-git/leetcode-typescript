@@ -39,14 +39,13 @@ body:
     validations:
       required: true
 
-  - type: textarea
-    id: test_design_notes
+  - type: markdown
     attributes:
-      label: Test Design Considerations
-      description: |
-        Apply these common testing principles and note any problem-specific considerations:
-
-        **Required Principles:**
+      value: |
+        ## Test Design Principles
+        
+        Apply these common testing principles when implementing tests:
+        
         1. Define CONSTRAINTS as constants (UPPER_SNAKE_CASE) at test file top
         2. Calculate derived values as variables (lowerCamelCase) within tests
         3. Consider worst-case scenarios (Identify O(n²) or exponential cases that stress the algorithm)
@@ -54,23 +53,6 @@ body:
         5. Handle numerical precision for floating-point problems
         6. Optimize test combinations (avoid redundant tests)
         7. Never optimize for specific test inputs - optimize for algorithmic efficiency
-
-        **Problem-Specific Considerations:**
-        List any unique test scenarios for this problem
-      placeholder: |
-        Define CONSTRAINTS:
-        - Minimum/maximum input sizes (using CONSTRAINTS.MIN_LENGTH, MAX_LENGTH)
-        - Boundary values (using CONSTRAINTS.MIN_VALUE, MAX_VALUE)
-
-        Test categories to consider:
-        - Basic functionality (given examples)
-        - Special values (zero, negative)
-        - Array size limits (MIN_LENGTH: 2, MAX_LENGTH: 10^4)
-        - Worst-case performance (solution at array end, maximum recursion depth)
-        - Boundary values (MIN_VALUE: -10^9, MAX_VALUE: 10^9)
-        - [Add any unique scenarios for this problem]
-    validations:
-      required: false
 
   - type: checkboxes
     id: implementation_checklist

@@ -51,6 +51,6 @@ When implementing a new LeetCode problem:
 3. Implement multiple solution approaches in `solution.ts`
 4. Refactor and add alternative approaches
 5. Export optimal solution as default, alternatives as named exports
-6. Include complexity analysis in JSDoc comments
+6. Add JSDoc for internal implementations and public API
 7. Add bilingual comments for key logic
 8. Ensure all CI checks pass before committing

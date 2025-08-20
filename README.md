@@ -10,47 +10,25 @@ TypeScriptで解いたLeetCodeの問題を記録するプロジェクト。
 
 ## 開発コマンド
 
-### 基本コマンド
-
 ```bash
-# 依存関係をインストール
-npm install
-
 # 全てのテストを実行
 npm test
 
 # テストをwatch mode（開発用）で実行
 npm test:watch
 
-# TypeScriptをビルド
-npm run build
-
-# Prettierでコードをフォーマット
+# コード整形
 npm run format
-
-# ESLintでコードをチェック
-npm run lint
 ```
 
-### 個別問題のテスト
-
-```bash
-# 特定の問題のテストを実行
-npm test -- --testPathPattern="0001-two-sum"
-
-# 特定のファイルのテストを実行
-npm test src/problems/0001-two-sum/solution.test.ts
-```
+詳細なコマンドと使用例は[CLAUDE.md](./CLAUDE.md#essential-commands)を参照
 
 ## 新規問題の追加
 
 LeetCodeの新しい問題を実装する際の手順：
 
-1. ディレクトリを作成：`src/problems/[問題番号(4桁形式)]-[問題名]/`
-2. 制約の境界値を全て含む包括的なテストを作成
-3. `solution.ts`に複数の解法によるアプローチを実装
-4. リファクタリングと代替アプローチの追加
-5. 最適解をデフォルトエクスポート、代替案を名前付きエクスポートとして出力
-6. JSDocを内部実装と公開APIに追加
-7. 重要なロジックには日英両言語でコメントを追加
-8. コミット前に全てのCIチェックが通ることを確認
+1. [新しいIssueを作成](https://github.com/minamizawa-git/leetcode-typescript/issues/new?template=new-problem.yml)
+2. テスト作成（TDD）
+3. 実装とリファクタリング
+
+実装規約とベストプラクティスは[CLAUDE.md](./CLAUDE.md#project-structure)を参照

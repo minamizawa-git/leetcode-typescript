@@ -39,21 +39,6 @@ body:
     validations:
       required: true
 
-  - type: markdown
-    attributes:
-      value: |
-        ## Test Design Principles
-        
-        Apply these common testing principles when implementing tests:
-        
-        1. Define CONSTRAINTS as constants (UPPER_SNAKE_CASE) at test file top
-        2. Calculate derived values as variables (lowerCamelCase) within tests
-        3. Consider worst-case scenarios (Identify O(n²) or exponential cases that stress the algorithm)
-        4. Test with actual constraint boundaries, not just "large" values
-        5. Handle numerical precision for floating-point problems
-        6. Optimize test combinations (avoid redundant tests)
-        7. Never optimize for specific test inputs - optimize for algorithmic efficiency
-
   - type: checkboxes
     id: implementation_checklist
     attributes:

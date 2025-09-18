@@ -4,6 +4,7 @@
  * A straightforward approach that checks all possible pairs.
  * Easy to understand but inefficient for large datasets.
  *
+ * @remarks
  * Algorithm:
  * 1. Iterate through each element with outer loop
  * 2. For each element, check all subsequent elements
@@ -47,6 +48,7 @@ export function bruteForce(nums: number[], target: number): number[] {
  * An efficient single-pass solution using hash map for complement lookup.
  * Trades space for time complexity improvement.
  *
+ * @remarks
  * Algorithm:
  * 1. For each element, calculate complement (target - current)
  * 2. Check if complement exists in hash map
@@ -90,10 +92,10 @@ export function hashMap(nums: number[], target: number): number[] {
 /**
  * Finds two numbers in an array that sum to a target value
  *
- * @param {number[]} nums - Array of integers
- * @param {number} target - Target sum to find
- * @returns {number[]} Indices of the two numbers that add up to target [i, j] where i < j
- * @throws {Error} If no valid pair exists (though one valid answer is guaranteed by constraints)
+ * @param nums - Array of integers
+ * @param target - Target sum to find
+ * @returns Indices of the two numbers that add up to target [i, j] where i < j
+ * @throws Error if no valid pair exists (though one valid answer is guaranteed by constraints)
  *
  * @example
  * ```typescript
@@ -102,6 +104,8 @@ export function hashMap(nums: number[], target: number): number[] {
  * twoSum([3, 3], 6);          // returns [0, 1] because nums[0] + nums[1] = 6
  * ```
  *
- * @see {@link https://leetcode.com/problems/two-sum/} - LeetCode Problem
+ * @see {@link https://leetcode.com/problems/two-sum/ | LeetCode Problem}
+ *
+ * @public
  */
 export const twoSum = hashMap;

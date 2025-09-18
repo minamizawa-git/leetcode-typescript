@@ -4,6 +4,7 @@
  * A straightforward approach that compares every pair of elements.
  * Simple to understand but inefficient for large arrays.
  *
+ * @remarks
  * Algorithm:
  * 1. Iterate through each element with outer loop
  * 2. For each element, check all subsequent elements
@@ -50,6 +51,7 @@ export function bruteForce(nums: number[]): boolean {
  * An efficient single-pass solution using Set for duplicate detection.
  * Trades space for time complexity improvement.
  *
+ * @remarks
  * Algorithm:
  * 1. Create an empty Set to track seen values
  * 2. For each element, check if it exists in the Set
@@ -92,6 +94,7 @@ export function hashSet(nums: number[]): boolean {
  * Sorts the array first, then checks adjacent elements for duplicates.
  * Time-space trade-off favoring space over the hash set approach.
  *
+ * @remarks
  * Algorithm:
  * 1. Sort the array in ascending order
  * 2. Iterate through sorted array
@@ -136,8 +139,8 @@ export function sorted(nums: number[]): boolean {
 /**
  * Determines if an array contains any duplicate values
  *
- * @param {number[]} nums - Array of integers to check for duplicates
- * @returns {boolean} true if any value appears at least twice, false if all values are distinct
+ * @param nums - Array of integers to check for duplicates
+ * @returns true if any value appears at least twice, false if all values are distinct
  *
  * @example
  * ```typescript
@@ -146,6 +149,8 @@ export function sorted(nums: number[]): boolean {
  * containsDuplicate([1, 1, 1, 3, 3, 4, 3]);  // returns true (multiple duplicates)
  * ```
  *
- * @see {@link https://leetcode.com/problems/contains-duplicate/} - LeetCode Problem
+ * @see {@link https://leetcode.com/problems/contains-duplicate/ | LeetCode Problem}
+ *
+ * @public
  */
 export const containsDuplicate = hashSet;

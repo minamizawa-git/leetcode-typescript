@@ -106,9 +106,9 @@ Test code may only be modified when:
 - Avoid hardcoding expected inputs from test cases
 - Your solution must work for any valid input within the constraints, not just the test data
 
-### Add JSDoc to Internal Implementations and Public API Following Examples
+### Add TSDoc to Internal Implementations and Public API Following Examples
 
-Each solution file must include detailed JSDoc comments following these specifications:
+Each solution file must include detailed TSDoc comments following these specifications:
 
 #### Internal Algorithm Implementations (bruteForce, hashMap, etc.)
 
@@ -116,13 +116,14 @@ Focus: **How it works and why** - for learning and maintenance
 
 - Title format: `[Problem Name] - [Approach Name] Implementation`
 - Brief overview explaining the approach and its trade-offs (1-2 lines)
-- Algorithm section with numbered steps
-- Time Complexity: O notation with detailed calculation breakdown
-  - Explain loop iterations and operations
-  - Show mathematical derivation (e.g., n(n-1)/2 → O(n²), n × O(1) = O(n))
-- Space Complexity: O notation with memory usage explanation
-  - Describe data structures used
-  - Explain worst-case memory growth
+- Use `@remarks` section for detailed algorithm and complexity analysis:
+  - Algorithm steps (numbered)
+  - Time Complexity: O notation with detailed calculation breakdown
+    - Explain loop iterations and operations
+    - Show mathematical derivation (e.g., n(n-1)/2 → O(n²), n × O(1) = O(n))
+  - Space Complexity: O notation with memory usage explanation
+    - Describe data structures used
+    - Explain worst-case memory growth
 - Mark with `@internal` tag
 
 Example Structure:
@@ -134,6 +135,7 @@ Example Structure:
  * A straightforward approach that checks all possible pairs.
  * Easy to understand but inefficient for large datasets.
  *
+ * @remarks
  * Algorithm:
  * 1. Iterate through each element with outer loop
  * 2. For each element, check all subsequent elements
@@ -157,11 +159,12 @@ Example Structure:
 Focus: **What it does and how to use it** - for API consumers
 
 - Concise one-line function description
-- `@param` tags with type and description for each parameter
+- `@param` tags with description (no type annotations)
 - `@returns` tag describing the return value format
 - `@throws` tag explaining error conditions
 - `@example` section with at least 3 usage examples showing different cases
-- `@see` tag with LeetCode problem URL
+- `@see` tag with LeetCode problem URL (TSDoc link format using pipe separator)
+- Mark with `@public` tag
 
 Example Structure:
 
@@ -169,10 +172,10 @@ Example Structure:
 /**
  * Finds two numbers in an array that sum to a target value
  *
- * @param {number[]} nums - Array of integers
- * @param {number} target - Target sum to find
- * @returns {number[]} Indices of the two numbers that add up to target [i, j] where i < j
- * @throws {Error} If no valid pair exists (though one valid answer is guaranteed by constraints)
+ * @param nums - Array of integers
+ * @param target - Target sum to find
+ * @returns Indices of the two numbers that add up to target [i, j] where i < j
+ * @throws Error if no valid pair exists (though one valid answer is guaranteed by constraints)
  *
  * @example
  * ```typescript
@@ -181,7 +184,9 @@ Example Structure:
  * twoSum([3, 3], 6);          // returns [0, 1] because nums[0] + nums[1] = 6
  * ```
  *
- * @see {@link https://leetcode.com/problems/two-sum/} - LeetCode Problem
+ * @see {@link https://leetcode.com/problems/two-sum/ | LeetCode Problem}
+ *
+ * @public
  */
 ````
 

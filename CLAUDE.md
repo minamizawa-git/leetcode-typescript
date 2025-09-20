@@ -51,9 +51,15 @@ Each LeetCode problem follows this structure:
 
 ```
 src/problems/[problem-number(4-digit format)]-[problem-name]/
-├── solution.ts      # Multiple solution approaches with complexity analysis
-└── solution.test.ts # Comprehensive test cases including edge cases
+├── implementations/   # Different algorithm implementations
+│   ├── brute-force.ts # Brute force approach
+│   ├── hash-map.ts    # Optimized approach
+│   └── ...            # Other implementations
+├── solution.ts        # Imports and exports the optimal solution
+└── solution.test.ts   # Comprehensive test cases including edge cases
 ```
+
+The `implementations/` folder contains separate files for each algorithmic approach, while `solution.ts` acts as the main entry point that exports the optimal solution as default.
 
 ## TypeScript Configuration
 
@@ -94,11 +100,12 @@ Test code may only be modified when:
 
 ### Apply Implementation Design Principles
 
-1. Multiple approaches (e.g., brute force, optimal)
-2. Detailed complexity analysis in JSDoc comments
-3. Bilingual inline comments (Japanese/English)
-4. Default export of the optimal solution
-5. Named exports for alternative approaches
+1. Create separate implementation files in `implementations/` folder for each approach
+2. Each implementation file should contain detailed TSDoc with complexity analysis
+3. Use bilingual inline comments (Japanese/English) for key logic
+4. Main `solution.ts` imports from implementations and exports:
+   - Default export: optimal solution
+   - Named exports: alternative approaches (if needed for comparison)
 
 ### Keep Solutions Independent from Test Data
 
@@ -203,10 +210,15 @@ Example Structure:
 When implementing a new LeetCode problem:
 
 1. Create directory: `src/problems/[number(4-digit format)]-[name]/`
-2. Write comprehensive tests covering all constraint boundaries
-3. Implement multiple solution approaches in `solution.ts`
-4. Refactor and add alternative approaches
-5. Export optimal solution as default, alternatives as named exports
-6. Include complexity analysis in JSDoc comments
-7. Add bilingual comments for key logic
-8. Ensure all CI checks pass before committing
+2. Write comprehensive tests in `solution.test.ts` covering all constraint boundaries
+3. Create `implementations/` subfolder for different approaches:
+   - Start with `brute-force.ts` for the simplest solution
+   - Add optimized approaches (e.g., `hash-map.ts`, `two-pointers.ts`)
+4. Each implementation file must include full TSDoc documentation
+5. Create `solution.ts` that imports and exports the optimal approach as default
+6. Add bilingual comments (Japanese/English) for key logic
+7. Ensure all CI checks pass before committing:
+   - Format: `npm run format`
+   - Lint: `npm run lint`
+   - Type check: `npx tsc --noEmit`
+   - Tests: `npm test`

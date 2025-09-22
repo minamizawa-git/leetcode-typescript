@@ -17,4 +17,6 @@ import { hashSet } from './implementations/hash-set';
  *
  * @public
  */
-export const containsDuplicate = hashSet;
+export function containsDuplicate(nums: number[]): boolean {
+  return hashSet(nums);
+}

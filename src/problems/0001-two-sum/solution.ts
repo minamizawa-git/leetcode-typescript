@@ -5,7 +5,7 @@ import { hashMap } from './implementations/hash-map';
  *
  * @param nums - Array of integers
  * @param target - Target sum to find
- * @returns Indices of the two numbers that add up to target [i, j] where i < j
+ * @returns Indices of the two numbers that add up to target [i, j] where i \< j
  * @throws Error if no valid pair exists (though one valid answer is guaranteed by constraints)
  *
  * @example
@@ -19,4 +19,6 @@ import { hashMap } from './implementations/hash-map';
  *
  * @public
  */
-export const twoSum = hashMap;
+export function twoSum(nums: number[], target: number): number[] {
+  return hashMap(nums, target);
+}

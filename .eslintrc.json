@@ -8,8 +8,44 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended-type-checked"
   ],
+  "plugins": ["tsdoc", "jsdoc"],
   "rules": {
-    "@typescript-eslint/no-non-null-assertion": "error"
+    "@typescript-eslint/no-non-null-assertion": "error",
+    "tsdoc/syntax": "error"
   },
-  "ignorePatterns": ["node_modules/**", "dist/**", "coverage/**", "jest.config.js"]
+  "ignorePatterns": [
+    "node_modules/**",
+    "dist/**",
+    "coverage/**",
+    "jest.config.js"
+  ],
+  "overrides": [
+    {
+      "files": ["**/implementations/*.ts"],
+      "rules": {
+        "jsdoc/require-jsdoc": ["error"],
+        "jsdoc/require-description": "error",
+        "jsdoc/tag-lines": ["error", "any", { "startLines": 1 }]
+      }
+    },
+    {
+      "files": ["**/solution.ts"],
+      "rules": {
+        "no-restricted-syntax": [
+          "error",
+          {
+            "selector": "ExportNamedDeclaration > VariableDeclaration > VariableDeclarator[init.type='Identifier']",
+            "message": "Direct re-export of functions is not allowed."
+          }
+        ],
+        "jsdoc/require-jsdoc": ["error"],
+        "jsdoc/require-description": "error",
+        "jsdoc/require-param": "error",
+        "jsdoc/require-returns": "error",
+        "jsdoc/require-returns-description": "error",
+        "jsdoc/require-example": "error",
+        "jsdoc/tag-lines": ["error", "any", { "startLines": 1 }]
+      }
+    }
+  ]
 }

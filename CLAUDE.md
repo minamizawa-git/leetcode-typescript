@@ -200,10 +200,10 @@ Example Structure:
 ## Code Quality Standards
 
 - Prettier formatting with single quotes and trailing commas
-- ESLint with TypeScript recommended rules
-- No non-null assertions allowed (`!` operator)
+- ESLint with TypeScript recommended rules plus JSDoc/TSDoc enforcement
+  - No non-null assertions allowed (`!` operator)
+  - Direct re-export of functions in solution.ts is prohibited to ensure proper documentation
 - All code must pass strict type checking
-- Bilingual comments for clarity
 
 ## Adding New Problems
 

@@ -11,11 +11,11 @@ A project to record LeetCode problems solved in TypeScript.
 ## Development Commands
 
 ```bash
-# Run all tests
-npm test
-
 # Run tests in watch mode (for development)
 npm test:watch
+
+# Run all checks (format, lint, typecheck, test)
+npm run check
 
 # Format code
 npm run format

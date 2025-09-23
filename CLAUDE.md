@@ -31,17 +31,29 @@ npm run format
 npm run lint
 
 # Type check (must pass in CI)
-npx tsc --noEmit
+npm run typecheck
+
+# Check formatting without modifying files
+npm run format:check
+
+# Run all checks (format, lint, typecheck, test)
+npm run check
 ```
 
 ### CI Requirements
 
 Before committing, ensure all these pass:
 
-1. `npx prettier --check "src/**/*.ts"` - Format check
+1. `npm run format:check` - Format check
 2. `npm run lint` - ESLint check
-3. `npx tsc --noEmit` - Type check
+3. `npm run typecheck` - Type check
 4. `npm test` - All tests
+
+Or run all checks at once:
+
+```bash
+npm run check
+```
 
 ## Project Structure
 
@@ -219,6 +231,4 @@ When implementing a new LeetCode problem:
 6. Add bilingual comments (Japanese/English) for key logic
 7. Ensure all CI checks pass before committing:
    - Format: `npm run format`
-   - Lint: `npm run lint`
-   - Type check: `npx tsc --noEmit`
-   - Tests: `npm test`
+   - Run all checks: `npm run check`

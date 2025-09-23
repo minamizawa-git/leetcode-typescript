@@ -51,5 +51,5 @@ body:
         - label: Implement solution(s)
         - label: Add complexity analysis in comments
         - label: Format code (`npm run format`)
-        - label: Run lint checks (`npm run lint`)
+        - label: Run all checks (`npm run check`)
         - label: Verify all tests pass

@@ -11,11 +11,11 @@ TypeScriptで解いたLeetCodeの問題を記録するプロジェクト。
 ## 開発コマンド
 
 ```bash
-# 全てのテストを実行
-npm test
-
 # テストをwatch mode（開発用）で実行
 npm test:watch
+
+# 全てのチェック（フォーマット・リント・型チェック・テスト）を実行
+npm run check
 
 # コード整形
 npm run format

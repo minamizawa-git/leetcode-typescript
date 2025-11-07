@@ -19,6 +19,5 @@ coverage/
 # Editor
 .vscode/
 
-# Claude Code
-CLAUDE.local.md
-.claude/settings.local.json
+# Local files
+*.local.*

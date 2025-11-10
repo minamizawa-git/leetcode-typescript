@@ -1,47 +1,66 @@
 /**
- * Contains Duplicate - Sorted Implementation
+ * Contains Duplicate - ソートによる実装
  *
- * Sorts the array first, then checks adjacent elements for duplicates.
- * Time-space trade-off favoring space over the hash set approach.
+ * 配列をソートしてから隣接要素を比較するアプローチ。
  *
  * @remarks
- * Algorithm:
- * 1. Sort the array in ascending order
- * 2. Iterate through sorted array
- * 3. Compare each element with its next neighbor
- * 4. Return true if adjacent elements are equal
+ * **注意: この実装は入力配列を破壊的に変更します（元の順序が失われます）**
  *
- * Time Complexity: O(n log n)
- * - Sorting: O(n log n) - uses TimSort in V8 engine
- * - Single pass through sorted array: O(n)
- * - Total: O(n log n) + O(n) = O(n log n)
- * - Dominated by sorting complexity
+ * アルゴリズム:
+ * 1. 配列を昇順にソート（破壊的操作）
+ * 2. ソート済み配列を走査
+ * 3. 各要素と隣接する次の要素を比較
+ * 4. 隣接要素が等しければtrueを返す
  *
- * Space Complexity: O(1)
- * - In-place sorting (mutates input array)
- * - No additional data structures
- * - Only constant variables: i, current, next
- * - Note: Sorting algorithm may use O(log n) stack space internally
+ * 時間計算量: O(n log n)
+ * - ソート: O(n log n)
+ *   - Array.prototype.sort() の仕様:
+ *     - デフォルトでは要素を文字列に変換して辞書順でソート
+ *     - 数値配列の場合、比較関数 `(a, b) => a - b` が必須
+ *     - 比較関数を省略すると [2, 11, 3] が [11, 2, 3] になり誤判定の原因となる
+ *   - log n とは: データを半分に分割できる回数（底は2の対数）
+ *     - 例: n=8の場合、8→4→2→1 と3回分割できるので log₂8 = 3
+ *     - 例: n=1000の場合、約10回の分割で1になるので log₂1000 ≈ 10
+ *   - 分割統治法の計算量:
+ *     - n個の要素を log n 回分割する
+ *     - 各分割段階で n 個の要素を処理する
+ *     - 合計: n × log n → O(n log n)
+ * - ソート済み配列の走査: O(n)
+ *   - ループ: i = 0 から n-2 まで → 最大(n-1)回 → O(n)
+ *   - 各比較: 隣接要素の等価性チェックのみ → O(1)
+ *   - 合計: (n-1) × O(1) = O(n)
+ * - 全体の合計: O(n log n) + O(n) = O(n log n)
+ *   - nが大きくなると、n log n の方が n よりも大きくなる
+ *   - ビッグO記法では支配的な項のみを残す
+ *
+ * 空間計算量: O(log n) ~ O(n)（ソートアルゴリズムに依存）
+ * - ループ変数 i や一時変数 current, next だけであれば O(1)
+ * - ただし Array.sort() の補助領域は実装依存で O(log n)〜O(n)
+ *   - **実務上は最悪ケースO(n)と想定すべき**
  *
  * @internal
  */
 export function sorted(nums: number[]): boolean {
-  // 配列をソートして隣接要素を比較 / Sort array and compare adjacent elements
+  // 配列を昇順にソート（破壊的操作）
+  // ソート後は同じ値が隣接するため、重複の検出が簡単になる
+  // 例: [3, 1, 2, 1] → [1, 1, 2, 3]
   nums.sort((a, b) => a - b);
 
+  // ソート済み配列を走査: i は 0 から n-2 まで
+  // nums.length - 1 までなのは、nums[i + 1] にアクセスするため
   for (let i = 0; i < nums.length - 1; i++) {
+    /** 現在の要素 */
     const current = nums[i];
+    /** 次の要素（隣接する右側の要素） */
     const next = nums[i + 1];
-
-    // undefined チェック / Check for undefined
     if (current === undefined || next === undefined) continue;
 
-    // 隣接要素が同じなら重複 / If adjacent elements are equal, duplicate exists
+    // 隣接要素が同じなら重複が存在
     if (current === next) {
       return true;
     }
   }
 
-  // 全て異なる値 / All values are distinct
+  // 全て異なる値
   return false;
 }

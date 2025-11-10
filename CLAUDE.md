@@ -113,8 +113,8 @@ Test code may only be modified when:
 ### Apply Implementation Design Principles
 
 1. Create separate implementation files in `implementations/` folder for each approach
-2. Each implementation file should contain detailed TSDoc with complexity analysis
-3. Use bilingual inline comments (Japanese/English) for key logic
+2. Each implementation file should contain detailed TSDoc with complexity analysis in Japanese
+3. Use Japanese comments for key logic and explanations
 4. Main `solution.ts` imports from implementations and exports:
    - Default export: optimal solution
    - Named exports: alternative approaches (if needed for comparison)
@@ -127,47 +127,58 @@ Test code may only be modified when:
 
 ### Add TSDoc to Internal Implementations and Public API Following Examples
 
-Each solution file must include detailed TSDoc comments following these specifications:
+Each solution file must include detailed TSDoc comments in Japanese following these specifications:
 
 #### Internal Algorithm Implementations (bruteForce, hashMap, etc.)
 
 Focus: **How it works and why** - for learning and maintenance
 
-- Title format: `[Problem Name] - [Approach Name] Implementation`
-- Brief overview explaining the approach and its trade-offs (1-2 lines)
+- Title format: `[Problem Name] - [Approach Name in Japanese]による実装`
+- Brief overview explaining the approach and its trade-offs (1-2 lines in Japanese)
 - Use `@remarks` section for detailed algorithm and complexity analysis:
-  - Algorithm steps (numbered)
-  - Time Complexity: O notation with detailed calculation breakdown
+  - Algorithm steps (numbered, in Japanese)
+  - Time Complexity: O notation with detailed calculation breakdown in Japanese
     - Explain loop iterations and operations
     - Show mathematical derivation (e.g., n(n-1)/2 → O(n²), n × O(1) = O(n))
-  - Space Complexity: O notation with memory usage explanation
+  - Space Complexity: O notation with memory usage explanation in Japanese
     - Describe data structures used
     - Explain worst-case memory growth
+- Add `@throws` tag only if the function actually throws exceptions (in Japanese)
 - Mark with `@internal` tag
 
 Example Structure:
 
 ```typescript
 /**
- * Two Sum - Brute Force Implementation
+ * Two Sum - 総当たり法による実装
  *
- * A straightforward approach that checks all possible pairs.
- * Easy to understand but inefficient for large datasets.
+ * 全ての組み合わせをチェックする非効率的なアプローチ。
  *
  * @remarks
- * Algorithm:
- * 1. Iterate through each element with outer loop
- * 2. For each element, check all subsequent elements
- * 3. Return indices when sum equals target
+ * アルゴリズム:
+ * 1. 外側のループで各要素を走査
+ * 2. 各要素に対して、後続の全ての要素をチェック
+ * 3. 合計が目標値と一致したらインデックスを返す
  *
- * Time Complexity: O(n²)
- * - Outer loop: runs n-1 times
- * - Inner loop: runs (n-1) + (n-2) + ... + 1 times
- * - Total iterations: n(n-1)/2 → O(n²)
+ * 時間計算量: O(n²)
+ * - 外側のループ: i = 0 から n-2 まで → (n-1)回実行
+ * - 内側のループ: j = i+1 から n-1 まで
+ *   - i=0のとき: (n-1)回
+ *   - i=1のとき: (n-2)回
+ *   - ...
+ *   - i=n-2のとき: 1回
+ * - 合計:
+ *   (n-1) + (n-2) + ... + 1 = n(n-1)/2
+ *   = (n² - n)/2
+ *   → O(n²)
  *
- * Space Complexity: O(1)
- * - No additional data structures used
- * - Only constant variables: i, j
+ * 空間計算量: O(1)
+ * - ループ変数 i: 1個
+ * - ループ変数 j: 1個
+ * - 一時変数: 入力サイズnに依存しない → 定数個(c)
+ * - 合計: 1 + 1 + c → O(1)
+ *
+ * @throws 合計が目標値と一致するペアが見つからない場合はエラー
  *
  * @internal
  */
@@ -177,11 +188,11 @@ Example Structure:
 
 Focus: **What it does and how to use it** - for API consumers
 
-- Concise one-line function description
-- `@param` tags with description (no type annotations)
-- `@returns` tag describing the return value format
-- `@throws` tag explaining error conditions
-- `@example` section with at least 3 usage examples showing different cases
+- Concise one-line function description in Japanese
+- `@param` tags with description in Japanese (no type annotations)
+- `@returns` tag describing the return value format in Japanese
+- `@throws` tag only if the function actually throws exceptions (in Japanese)
+- `@example` section with at least 3 usage examples showing different cases (comments in Japanese)
 - `@see` tag with LeetCode problem URL (TSDoc link format using pipe separator)
 - Mark with `@public` tag
 
@@ -189,18 +200,18 @@ Example Structure:
 
 ````typescript
 /**
- * Finds two numbers in an array that sum to a target value
+ * 配列内で合計が目標値となる2つの数値を見つける関数
  *
- * @param nums - Array of integers
- * @param target - Target sum to find
- * @returns Indices of the two numbers that add up to target [i, j] where i < j
- * @throws Error if no valid pair exists (though one valid answer is guaranteed by constraints)
+ * @param nums - 整数の配列
+ * @param target - 目標となる合計値
+ * @returns 合計が目標値となる2つの数値のインデックス [i, j]（i < j）
+ * @throws 合計が目標値と一致するペアが見つからない場合はエラー
  *
  * @example
  * ```typescript
- * twoSum([2, 7, 11, 15], 9);  // returns [0, 1] because nums[0] + nums[1] = 9
- * twoSum([3, 2, 4], 6);       // returns [1, 2] because nums[1] + nums[2] = 6
- * twoSum([3, 3], 6);          // returns [0, 1] because nums[0] + nums[1] = 6
+ * twoSum([2, 7, 11, 15], 9);  // nums[0] + nums[1] = 9 のため [0, 1] を返す
+ * twoSum([3, 2, 4], 6);       // nums[1] + nums[2] = 6 のため [1, 2] を返す
+ * twoSum([3, 3], 6);          // nums[0] + nums[1] = 6 のため [0, 1] を返す
  * ```
  *
  * @see {@link https://leetcode.com/problems/two-sum/ | LeetCode Problem}
@@ -223,12 +234,16 @@ When implementing a new LeetCode problem:
 
 1. Create directory: `src/problems/[number(4-digit format)]-[name]/`
 2. Write comprehensive tests in `solution.test.ts` covering all constraint boundaries
+   - Use Japanese for test descriptions (describe, it blocks)
+   - Add Japanese comments explaining test cases and constraints
 3. Create `implementations/` subfolder for different approaches:
    - Start with `brute-force.ts` for the simplest solution
    - Add optimized approaches (e.g., `hash-map.ts`, `two-pointers.ts`)
-4. Each implementation file must include full TSDoc documentation
+4. Each implementation file must include full TSDoc documentation in Japanese
+   - Follow the Internal Implementation TSDoc format
+   - Add Japanese inline comments for key logic
 5. Create `solution.ts` that imports and exports the optimal approach as default
-6. Add bilingual comments (Japanese/English) for key logic
-7. Ensure all CI checks pass before committing:
+   - Follow the Public API TSDoc format in Japanese
+6. Ensure all CI checks pass before committing:
    - Format: `npm run format`
    - Run all checks: `npm run check`

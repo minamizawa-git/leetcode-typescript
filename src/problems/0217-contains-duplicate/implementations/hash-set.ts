@@ -1,42 +1,45 @@
 /**
- * Contains Duplicate - Hash Set Implementation (Optimal)
+ * Contains Duplicate - ハッシュセットによる実装
  *
- * An efficient single-pass solution using Set for duplicate detection.
- * Trades space for time complexity improvement.
+ * ハッシュセットを使用して重複を検出する効率的なアプローチ。
  *
  * @remarks
- * Algorithm:
- * 1. Create an empty Set to track seen values
- * 2. For each element, check if it exists in the Set
- * 3. If exists, duplicate found - return true
- * 4. Otherwise, add element to Set and continue
+ * アルゴリズム:
+ * 1. 空のSetを作成して、既に走査した値を記録
+ * 2. 各要素について、Setに存在するかチェック
+ * 3. 存在すれば重複が見つかったのでtrueを返す
+ * 4. 存在しなければSetに追加して次の要素へ進む
  *
- * Time Complexity: O(n)
- * - Single loop: runs n times
- * - Set.has() operation: O(1) average case - hash table property
- * - Set.add() operation: O(1) average case - hash table property
- * - Total: n × O(1) = O(n)
+ * 時間計算量: O(n)
+ * - ループ: 最大n回実行
+ * - Set.has(): O(1) - ハッシュテーブルの検索
+ * - Set.add(): O(1) - ハッシュテーブルの挿入
+ * - 合計: n × (O(1) + O(1)) = O(n)
  *
- * Space Complexity: O(n)
- * - Set stores unique elements encountered
- * - Worst case (all unique): stores n elements
- * - Memory usage grows linearly with input size
- * - Additional variable (num): O(1)
+ * 空間計算量: O(n)
+ * - seen Set: 最大n個の要素を格納
+ *   - 最良ケース: 最初の2要素が重複の場合 → O(1)
+ *   - 最悪ケース: 全て異なる値の場合 → O(n)
+ * - ループ変数 num: 1個
+ * - 合計: n + 1 → O(n)
  *
  * @internal
  */
 export function hashSet(nums: number[]): boolean {
-  // ハッシュセットで見た値を記録 / Record seen values using a hash set
+  /** 既に走査した値を記録するハッシュセット */
+  // 例: nums = [1, 2, 3, 1] の場合、{1, 2, 3} のように格納される（重複前）
   const seen = new Set<number>();
 
+  // 配列を走査: 各要素について、その値がSetに存在するかチェック
   for (const num of nums) {
-    // 既に見た値なら重複 / If value already seen, it's a duplicate
+    // 既に見た値なら重複が見つかった
     if (seen.has(num)) {
       return true;
     }
+    // 見たことのない値なので、Setに追加（後続の要素の重複検出で使用可能になる）
     seen.add(num);
   }
 
-  // 全て異なる値 / All values are distinct
+  // 全て異なる値
   return false;
 }

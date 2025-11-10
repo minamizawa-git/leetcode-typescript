@@ -25,7 +25,8 @@
       "rules": {
         "jsdoc/require-jsdoc": ["error"],
         "jsdoc/require-description": "error",
-        "jsdoc/tag-lines": ["error", "any", { "startLines": 1 }]
+        "jsdoc/tag-lines": ["error", "any", { "startLines": 1 }],
+        "jsdoc/require-throws": "error"
       }
     },
     {
@@ -44,6 +45,13 @@
         "jsdoc/require-returns": "error",
         "jsdoc/require-returns-description": "error",
         "jsdoc/require-example": "error",
+        "jsdoc/tag-lines": ["error", "any", { "startLines": 1 }],
+        "jsdoc/require-throws": "error"
+      }
+    },
+    {
+      "files": ["**/*.test.ts"],
+      "rules": {
         "jsdoc/tag-lines": ["error", "any", { "startLines": 1 }]
       }
     }

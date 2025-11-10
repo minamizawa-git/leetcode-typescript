@@ -1,46 +1,58 @@
 /**
- * Contains Duplicate - Brute Force Implementation
+ * Contains Duplicate - 総当たり法による実装
  *
- * A straightforward approach that compares every pair of elements.
- * Simple to understand but inefficient for large arrays.
+ * 全ての組み合わせをチェックする非効率的なアプローチ。
  *
  * @remarks
- * Algorithm:
- * 1. Iterate through each element with outer loop
- * 2. For each element, check all subsequent elements
- * 3. Return true immediately if duplicate found
- * 4. Return false if no duplicates after checking all pairs
+ * アルゴリズム:
+ * 1. 外側のループで各要素を走査
+ * 2. 各要素に対して、後続の全ての要素をチェック
+ * 3. 重複が見つかったら即座にtrueを返す
+ * 4. 全ての組み合わせをチェックして重複がなければfalseを返す
  *
- * Time Complexity: O(n²)
- * - Outer loop: runs n-1 times
- * - Inner loop: runs (n-1) + (n-2) + ... + 1 times
- * - Total iterations: n(n-1)/2 → O(n²)
- * - Each iteration does constant work: one equality comparison
+ * 時間計算量: O(n²)
+ * - 外側のループ: i = 0 から n-2 まで → (n-1)回実行
+ * - 内側のループ: j = i+1 から n-1 まで
+ *   - i=0のとき: (n-1)回
+ *   - i=1のとき: (n-2)回
+ *   - ...
+ *   - i=n-2のとき: 1回
+ * - 合計:
+ *   (n-1) + (n-2) + ... + 1 = n(n-1)/2
+ *   = (n² - n)/2
+ *   → O(n²)
+ * - 各比較: O(1) - 等価性チェックのみ
  *
- * Space Complexity: O(1)
- * - No additional data structures used
- * - Only constant variables: i, j, current, compare
- * - Memory usage remains constant regardless of input size
+ * 空間計算量: O(1)
+ * - ループ変数 i: 1個
+ * - ループ変数 j: 1個
+ * - 一時変数 current, compare: 2個
+ * - 合計: 入力サイズnに依存しない → O(1)
  *
  * @internal
  */
 export function bruteForce(nums: number[]): boolean {
-  // 二重ループで全ての組み合わせを確認 / Check all combinations using nested loops
+  // 外側のループ: 最初の要素を選択（i は 0 から n-2 まで）
+  // nums.length - 1 までなのは、最後の要素は内側ループで比較する要素がないため
   for (let i = 0; i < nums.length - 1; i++) {
+    /** 現在の要素（比較元） */
     const current = nums[i];
     if (current === undefined) continue;
 
+    // 内側のループ: 2番目の要素を選択（j は i+1 から n-1 まで）
+    // i + 1 から始めるのは、既にチェックした組み合わせを避けるため（例: i=0, j=1 でチェック済みなら、i=1, j=0 は不要）
     for (let j = i + 1; j < nums.length; j++) {
+      /** 比較対象の要素 */
       const compare = nums[j];
       if (compare === undefined) continue;
 
-      // 重複を発見したらすぐに true を返す / Return true immediately when duplicate found
+      // 重複を発見したら即座に true を返す
       if (current === compare) {
         return true;
       }
     }
   }
 
-  // 重複が見つからなかった場合 / No duplicates found
+  // 全ての組み合わせをチェックして重複が見つからなかった場合
   return false;
 }

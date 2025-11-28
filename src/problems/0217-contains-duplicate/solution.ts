@@ -1,4 +1,4 @@
-import { hashSet } from './implementations/hash-set';
+import { hashSet } from './implementations/hash-set.js';
 
 /**
  * 配列内に重複する値が存在するか判定する関数

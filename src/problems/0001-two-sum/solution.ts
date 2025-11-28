@@ -1,4 +1,4 @@
-import { hashMap } from './implementations/hash-map';
+import { hashMap } from './implementations/hash-map.js';
 
 /**
  * 配列内で合計が目標値となる2つの数値を見つける関数

@@ -2,7 +2,7 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.app.json"
   },
   "extends": [
     "eslint:recommended",
@@ -16,10 +16,15 @@
   "ignorePatterns": [
     "node_modules/**",
     "dist/**",
-    "coverage/**",
-    "jest.config.js"
+    "coverage/**"
   ],
   "overrides": [
+    {
+      "files": ["vitest.config.ts"],
+      "parserOptions": {
+        "project": "./tsconfig.node.json"
+      }
+    },
     {
       "files": ["**/implementations/*.ts"],
       "rules": {
@@ -51,6 +56,9 @@
     },
     {
       "files": ["**/*.test.ts"],
+      "parserOptions": {
+        "project": "./tsconfig.vitest.json"
+      },
       "rules": {
         "jsdoc/tag-lines": ["error", "any", { "startLines": 1 }]
       }

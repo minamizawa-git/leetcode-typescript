@@ -15,11 +15,11 @@ This is a TypeScript-based LeetCode solutions repository with strict type safety
 npm test
 
 # Run tests in watch mode (for development)
-npm test:watch
+npm run test:watch
 
 # Run tests for a specific problem
-npm test -- --testPathPattern="0001-two-sum"
-npm test src/problems/0001-two-sum/solution.test.ts
+npm test -- src/problems/0001-two-sum/solution.test.ts
+npm test -- -t "Two Sum"
 
 # Build TypeScript
 npm run build
@@ -73,7 +73,15 @@ src/problems/[problem-number(4-digit format)]-[problem-name]/
 
 The `implementations/` folder contains separate files for each algorithmic approach, while `solution.ts` acts as the main entry point that exports the optimal solution as default.
 
-## TypeScript Configuration
+### TypeScript Config Layout (Solution Style)
+
+- Root `tsconfig.json`: shared compilerOptions only (`module/moduleResolution: "nodenext"`, strict flags, `types: ["node"]`), `files: []`, and `references` pointing to the subprojects below. Do not run `tsc -p tsconfig.json` directly.
+- `tsconfig.app.json`: app code build target (`rootDir ./src`, `outDir ./dist`, `types: ["node"]`, tests excluded).
+- `tsconfig.vitest.json`: test-only target (`include: ["src/**/*.test.ts"]`, `types: ["vitest/globals", "node"]`, `noEmit: true`).
+- `tsconfig.node.json`: tool/config target (`include: ["vitest.config.ts"]`, `types: ["node"]`, `noEmit: true`).
+- Commands mapping: `npm run build` → app, `npm run test`/`test:watch` → Vitest, `npm run typecheck` → app + vitest + node.
+
+### TypeScript Configuration
 
 This project uses exceptionally strict TypeScript settings:
 

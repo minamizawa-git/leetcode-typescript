@@ -3,28 +3,26 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "type": "module",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "build": "tsc",
-    "typecheck": "tsc --noEmit",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "format:check": "prettier --check \"src/**/*.ts\"",
-    "lint": "eslint \"src/**/*.ts\"",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "build": "tsc -p tsconfig.app.json",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.vitest.json && tsc --noEmit -p tsconfig.node.json",
+    "format": "prettier --write \"{src/**/*.ts,vitest.config.ts}\"",
+    "format:check": "prettier --check \"{src/**/*.ts,vitest.config.ts}\"",
+    "lint": "eslint \"{src/**/*.ts,vitest.config.ts}\"",
     "check": "npm run format:check && npm run lint && npm run typecheck && npm run test"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.0",
     "@types/node": "~22.16.0",
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.44.0",
     "eslint": "~8.57.0",
     "eslint-plugin-jsdoc": "^59.1.0",
     "eslint-plugin-tsdoc": "^0.4.0",
-    "jest": "^29.7.0",
     "prettier": "^3.6.0",
-    "ts-jest": "^29.4.0",
-    "ts-node": "^10.9.0",
-    "typescript": "~5.9.0"
+    "typescript": "~5.9.0",
+    "vitest": "^2.1.4"
   }
 }

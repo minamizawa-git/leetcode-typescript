@@ -8,11 +8,20 @@
 
 A project to record LeetCode problems solved in TypeScript.
 
+## Project Structure
+
+```
+src/problems/[0001-two-sum]/
+├─ implementations/   # Alternative algorithm implementations
+├─ solution.ts        # Exports the chosen solution
+└─ solution.test.ts   # Tests
+```
+
 ## Development Commands
 
 ```bash
 # Run tests in watch mode (for development)
-npm test:watch
+npm run test:watch
 
 # Run all checks (format, lint, typecheck, test)
 npm run check
@@ -28,7 +37,5 @@ See [CLAUDE.md](./CLAUDE.md#essential-commands) for detailed commands and usage 
 When implementing a new LeetCode problem:
 
 1. [Create a new Issue](https://github.com/minamizawa-git/leetcode-typescript/issues/new?template=new-problem.yml)
-2. Write tests (TDD)
-3. Implement and refactor
-
-See [CLAUDE.md](./CLAUDE.md#project-structure) for implementation conventions and best practices
+2. Write tests (see [CLAUDE.md](./CLAUDE.md#testing-guidelines))
+3. Implement and refactor (see [CLAUDE.md](./CLAUDE.md#implementation-guidelines))

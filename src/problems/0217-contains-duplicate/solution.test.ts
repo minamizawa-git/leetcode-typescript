@@ -1,4 +1,4 @@
-import { containsDuplicate } from './solution';
+import { containsDuplicate } from './solution.js';
 
 describe('Contains Duplicate のテスト', () => {
   /**

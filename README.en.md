@@ -36,6 +36,6 @@ See [CLAUDE.md](./CLAUDE.md#essential-commands) for detailed commands and usage 
 
 When implementing a new LeetCode problem:
 
-1. [Create a new Issue](https://github.com/minamizawa-git/leetcode-typescript/issues/new?template=new-problem.yml)
+1. [Create a new Issue](https://github.com/miwyu/leetcode-typescript/issues/new?template=new-problem.yml)
 2. Write tests (see [CLAUDE.md](./CLAUDE.md#testing-guidelines))
 3. Implement and refactor (see [CLAUDE.md](./CLAUDE.md#implementation-guidelines))

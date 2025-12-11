@@ -1,6 +1,7 @@
 import jsdoc from 'eslint-plugin-jsdoc';
 import tsdoc from 'eslint-plugin-tsdoc';
 import tseslint from 'typescript-eslint';
+import localPlugin from './eslint-rules/index.js';
 
 // ESLint フラット設定（ESM）。実行ディレクトリに依存せず tsconfig を解決するため設定ファイル位置を基点にする。
 const tsconfigRootDir = import.meta.dirname;
@@ -44,9 +45,12 @@ export default tseslint.config(
   {
     // アルゴリズム実装ファイルのルール
     files: ['**/implementations/*.ts'],
+    plugins: {
+      local: localPlugin,
+    },
     rules: {
       // ドキュメント
-      'jsdoc/require-jsdoc': ['error'],
+      'local/implementations-jsdoc-rules': 'error',
       'jsdoc/require-description': 'error',
       'jsdoc/tag-lines': ['error', 'any', { startLines: 1 }],
       'jsdoc/require-throws': 'error',

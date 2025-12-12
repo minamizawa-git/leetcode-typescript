@@ -30,12 +30,12 @@ npm run check
 npm run format
 ```
 
-See [CLAUDE.md](./CLAUDE.md#essential-commands) for detailed commands and usage examples
+See [AGENTS.md](./AGENTS.md#essential-commands) for detailed commands and usage examples
 
 ## Adding New Problems
 
 When implementing a new LeetCode problem:
 
 1. [Create a new Issue](https://github.com/miwyu/leetcode-typescript/issues/new?template=new-problem.yml)
-2. Write tests (see [CLAUDE.md](./CLAUDE.md#testing-guidelines))
-3. Implement and refactor (see [CLAUDE.md](./CLAUDE.md#implementation-guidelines))
+2. Write tests (see [AGENTS.md](./AGENTS.md#testing-guidelines))
+3. Implement and refactor (see [AGENTS.md](./AGENTS.md#implementation-guidelines))

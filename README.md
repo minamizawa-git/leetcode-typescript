@@ -30,12 +30,12 @@ npm run check
 npm run format
 ```
 
-詳細なコマンドと使用例は[CLAUDE.md](./CLAUDE.md#essential-commands)を参照
+詳細なコマンドと使用例は[AGENTS.md](./AGENTS.md#essential-commands)を参照
 
 ## 新規問題の追加
 
 LeetCodeの新しい問題を実装する際の手順：
 
 1. [新しいIssueを作成](https://github.com/miwyu/leetcode-typescript/issues/new?template=new-problem.yml)
-2. テスト作成（詳細は[CLAUDE.md](./CLAUDE.md#testing-guidelines)を参照）
-3. 実装とリファクタリング（詳細は[CLAUDE.md](./CLAUDE.md#implementation-guidelines)を参照）
+2. テスト作成（詳細は[AGENTS.md](./AGENTS.md#testing-guidelines)を参照）
+3. 実装とリファクタリング（詳細は[AGENTS.md](./AGENTS.md#implementation-guidelines)を参照）
